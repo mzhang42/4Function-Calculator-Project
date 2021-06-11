@@ -1,0 +1,25 @@
+{% extends "base.html" %} 
+{% block content %}
+ <body>
+     <form method = "POST">{% csrf_token %}
+     <button name = "goBack" type = "submit" > Return to Calculator</button>
+     <button name = "wipe" type = "submit"> Wipe Result Record</button>
+<table style="width:100%">
+    <tr>
+        <th>First Number</th>
+        <th>Operation</th>
+        <th>Second Number</th>
+        <th>Result</th>
+    </tr>
+    {% for expression in past %}
+    <tr>
+        <td>{{expression.num_one}}</td>
+        <td>{{expression.operator}}</td>
+        <td>{{expression.num_two}}</td>
+        <td>{{expression.result}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</form>
+</body>
+{% endblock %}

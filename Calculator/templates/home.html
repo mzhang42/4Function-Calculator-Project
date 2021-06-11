@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block content %}
+
+<body>
+   <form method="POST">
+       {%if form.errors%}
+            Errors: 
+            {{form.errors.values|cut:"dict_values"|cut:"([['"|cut:"']])"}}
+            <br>
+       {%endif%}  
+       
+       {% csrf_token %} {{form.num_one}} {{form.calculation_type}} {{form.num_two}}
+
+       <button name="button" type="submit"><i class="fas fa-equals"></i></button>
+        <br>
+        {{resultdict}}
+        <br>
+        <button name = "switch" type = "submit" formnovalidate = "formnovalidate"> Show previous results </button>
+    </form>
+</body>
+{% endblock %}
